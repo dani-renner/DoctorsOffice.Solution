@@ -1,0 +1,19 @@
+@model DoctorsOffice.Models.Doctor
+
+<h1> Add a new Doctor </h1>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  @Html.LabelFor(model => model.Speciality)
+  @Html.TextBoxFor(model => model.Speciality)
+
+  @Html.Label("Select a Patient")
+  @Html.DropDownList("PatientId")
+
+  <input type="submit" value="Add Doctor" />
+}
+
+<p>@Html.ActionLink("Show all Doctors", "Index")</p>

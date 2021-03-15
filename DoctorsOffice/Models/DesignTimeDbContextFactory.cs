@@ -8,7 +8,7 @@ namespace DoctorsOffice.Models
   public class DoctorsOfficeContextFactory : IDesignTimeDbContextFactory<DoctorsOfficeContext>
   {
 
-    ToDoListContext IDesignTimeDbContextFactory<DoctorsOfficeContext>.CreateDbContext(string[] args)
+    DoctorsOfficeContext IDesignTimeDbContextFactory<DoctorsOfficeContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
           .SetBasePath(Directory.GetCurrentDirectory())

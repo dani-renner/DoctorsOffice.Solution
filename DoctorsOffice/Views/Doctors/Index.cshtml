@@ -1,0 +1,16 @@
+@using DoctorsOffice.Models;
+@model List<DoctorsOffice.Models.Doctor>;
+
+<h1>Doctors</h1>
+
+@if (@Model.Count == 0)
+{
+  <p>No Doctors Available</p>
+}
+
+@foreach (Doctor doctor in Model)
+{
+  <li>Doctor @doctor.Name - @doctor.Speciality</li>
+}
+
+<p>@Html.ActionLink("Add a Doctor", "Create")</p>

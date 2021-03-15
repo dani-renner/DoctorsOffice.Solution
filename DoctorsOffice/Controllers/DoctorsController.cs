@@ -40,5 +40,15 @@ namespace DoctorsOffice.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int doctorId)
+    {
+      var thisDoctor = _db.Doctors
+        .Include(doctor => doctor.JoinEntities)
+        .ThenInclude(join => join.Patient)
+        .FirstOrDefault(doctor => doctor.DoctorId == doctorId);
+
+      return View(thisDoctor);
+    }
   }
 }

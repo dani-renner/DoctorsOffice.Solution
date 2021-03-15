@@ -1,0 +1,24 @@
+@model DoctorsOffice.Models.Doctor
+@using DoctorsOffice.Models
+
+<h1> Doctors Details @Model.Name </h1>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>No Patients available</p>
+}
+else
+{
+  <h3>Patients:</h3>
+  <ul>
+    @foreach(var join in Model.JoinEntities)
+    {
+      <li>@join.Patient.Name</li>
+    }
+  </ul>
+}
+
+@* <p>@Html.ActionLink("Add a new patient", "AddPatient")</p> *@
+@* <p>@Html.ActionLink("Edit Doctor Info", "Edit")</p> *@
+@* <p>@Html.ActionLink("Delete selected Doctor", "Delete")</p> *@
+<p>@Html.ActionLink("Go Back - View all Doctor", "Index")</p>

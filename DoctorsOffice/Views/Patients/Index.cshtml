@@ -1,0 +1,13 @@
+@using DoctorsOffice.Models;
+@model List<DoctorsOffice.Models.Patient>;
+
+<h1>Patients</h1>
+
+<ul>
+  @foreach(Patient patient in Model)
+  {
+    <li>@patient.Name: @patient.BirthDate</li>
+  }
+</ul>
+<p>@Html.ActionLink("Create", "Create")</p> 
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

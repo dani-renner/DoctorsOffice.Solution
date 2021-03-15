@@ -50,5 +50,26 @@ namespace DoctorsOffice.Controllers
 
       return View(thisDoctor);
     }
+
+    public ActionResult Edit(int doctorId)
+    {
+      var thisDoctor = _db.Doctors.FirstOrDefault(doctor => doctor.DoctorId == doctorId);
+      ViewBag.PatientId = new SelectList(_db.Patients, "PatientId", "Name");
+      return View(thisDoctor);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Doctor doctor, int PatientId)
+    {
+      if(PatientId != 0)
+      {
+        _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = doctor.DoctorId, PatientId = PatientId});
+      }
+
+      _db.Entry(doctor).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }

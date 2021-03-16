@@ -1,6 +1,6 @@
 # _Doctor's Office_
 
-#### _A program that manages all of the doctors and patients' data. _
+#### _A program that manages all of the doctors and patients' data._
 
 #### By _**Tien Nguyen, Dani Renner, Woo Jin Kim**_
 

@@ -1,0 +1,18 @@
+@model DoctorsOffice.Models.Doctor
+@using DoctorsOffice.Models
+
+<h1> Add a Patient </h1>
+<h4> Adding Patient for Dr @Html.DisplayFor(model => model.Name) </h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.DoctorId)
+
+  @Html.Label("Select Patient")
+  @Html.DropDownList("PatientId")
+
+  <input type="submit" value="Add" />
+}
+
+<p> @Html.ActionLink($"Back to Doctor: {@Model.Name}", "Details", new { doctorId = Model.DoctorId })</p>
+<p> @Html.ActionLink("Back to Doctors List", "Index")</p>

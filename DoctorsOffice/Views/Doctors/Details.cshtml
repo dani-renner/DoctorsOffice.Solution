@@ -19,7 +19,7 @@ else
   </ul>
 }
 
-@* <p>@Html.ActionLink("Add a new patient", "AddPatient")</p> *@
+<p>@Html.ActionLink("Add a new patient", "AddPatient", new { doctorId = Model.DoctorId })</p>
 <p>@Html.ActionLink("Edit Doctor Info", "Edit", new { doctorId = Model.DoctorId})</p>
 <p>@Html.ActionLink("Delete selected Doctor", "Delete", new { id = Model.DoctorId})</p>
 <p>@Html.ActionLink("Go Back - View all Doctors", "Index")</p>

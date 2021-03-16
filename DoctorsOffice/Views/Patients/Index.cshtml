@@ -6,7 +6,7 @@
 <ul>
   @foreach(Patient patient in Model)
   {
-    <li>@patient.Name: @patient.BirthDate</li>
+    <li>@Html.ActionLink($"{@patient.Name}", "Details", new { patientId = patient.PatientId})</li>
   }
 </ul>
 <p>@Html.ActionLink("Create", "Create")</p> 

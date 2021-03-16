@@ -1,0 +1,22 @@
+@using DoctorsOffice.Models
+@model DoctorsOffice.Models.Patient
+
+<h1> Patient: @Model.Name </h1>
+<h2> Birthdate: @Model.BirthDate </h2>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p> Patient has no Doctors </p>
+}
+else
+{
+  <h3> Doctors: </h3>
+  <ul>
+    @foreach (var join in Model.JoinEntities)
+    {
+        <li>@join.Doctor.Name</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Go Back - View all Patients", "Index")</p>

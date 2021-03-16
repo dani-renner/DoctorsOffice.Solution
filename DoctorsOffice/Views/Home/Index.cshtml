@@ -1,5 +1,15 @@
-
-
+@{
+  Layout = "_Layout";
+}
 <h1>Welcome to the The Doctor DB!</h1>
+
+@* <form action="/index" method="POST">
+  <label for="name">Search for Patient(s) or Doctor(s):</input>
+  <input type="text" name="name" />
+
+  <button type="submit">Search</button>
+</form> *@
+
 <p>@Html.ActionLink("See all Doctors", "Index", "Doctors")</p>
 <p>@Html.ActionLink("See all Patients", "Index", "Patients")</p>
+<p>@Html.ActionLink("Search.", "Search")</p>

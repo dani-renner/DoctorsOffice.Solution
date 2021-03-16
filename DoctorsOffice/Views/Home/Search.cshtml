@@ -1,0 +1,44 @@
+@{
+  Layout = "_Layout";
+}
+@using DoctorsOffice.Models;
+
+@using (Html.BeginForm())
+{
+  @Html.Label("Category", "Category")
+  @Html.DropDownList("Category",(IEnumerable
+    <SelectListItem>)ViewBag.Category)
+
+  @Html.Label("Name", "Name")
+  @Html.TextBox("Name")
+  <input type="submit" value="Search!" />
+}
+
+@if(!(Model is null))
+{
+  @* <p>@Model</p> //@Model shows up, but it says @Model.StylistResults doesn't exist. *@
+  @if (Model["DoctorResults"].Count == 0 && Model["PatientResults"].Count == 0)
+  {
+    <h3>0 results found! Please try again.</h3>
+  }
+
+  else
+  {
+    
+  <ul>
+    @foreach (Doctor doctor in Model["DoctorResults"])
+    {
+      <li>@Html.ActionLink($"{doctor.Name}", "Details", "Doctors", new { doctorId = doctor.DoctorId})</li>
+    }
+  </ul>
+
+  <ul>
+    @foreach (Patient patient in Model["PatientResults"])
+    {
+      <li>@Html.ActionLink($"{patient.Name}", "Details", "Patients", new { patientId = patient.PatientId})</li>
+    }
+  </ul>
+  }
+}
+
+<p>@Html.ActionLink("Home.", "Index", "Home")</p>

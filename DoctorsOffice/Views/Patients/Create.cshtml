@@ -1,3 +1,6 @@
+@{
+  Layout = "_Layout";
+}
 @model DoctorsOffice.Models.Patient
 <h4>Add a new Patient</h4>
 
@@ -10,7 +13,7 @@
   @Html.TextBoxFor(model => model.BirthDate, new { type = "date"})
 
   @Html.Label("Select Doctor")
-  @Html.DropDownList("DoctorId")
+  @Html.DropDownList("DoctorId", null, string.Empty)
 
   <input type="submit" value="Add new patient" class="btn btn-default" />
 }

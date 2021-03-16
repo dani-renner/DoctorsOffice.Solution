@@ -29,15 +29,18 @@ namespace DoctorsOffice.Controllers
     [HttpPost]
     public ActionResult Create(Doctor doctor, int PatientId)
     {
-      _db.Doctors.Add(doctor);
-      _db.SaveChanges();
 
-      if(PatientId != 0)
-      {
-        _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = doctor.DoctorId, PatientId = PatientId });
+      bool matches = _db.DoctorPatient.Any(x => x.DoctorId == doctor.DoctorId && x.PatientId == PatientId);
+      if(!matches) {
+        _db.Doctors.Add(doctor);
+        _db.SaveChanges();
+        if(PatientId != 0)
+        {
+          _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = doctor.DoctorId, PatientId = PatientId });
+        }
+        _db.SaveChanges();
       }
 
-      _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
@@ -96,10 +99,23 @@ namespace DoctorsOffice.Controllers
     [HttpPost]
     public ActionResult AddPatient(Doctor doctor, int patientId)
     {
-      if(patientId != 0)
+      bool matches = _db.DoctorPatient.Any(x => x.DoctorId == doctor.DoctorId && x.PatientId == patientId);
+      if(!matches)
       {
-        _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = doctor.DoctorId, PatientId = patientId });
+        if(patientId != 0)
+        {
+          _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = doctor.DoctorId, PatientId = patientId });
+        }
+        _db.SaveChanges();
       }
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeletePatient(int joinId)
+    {
+      var joinEntry = _db.DoctorPatient.FirstOrDefault(entry => entry.DoctorPatientId == joinId);
+      _db.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

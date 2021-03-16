@@ -1,0 +1,23 @@
+@model DoctorsOffice.Models.Patient
+@using DoctorsOffice.Models
+
+<h1> Edit Patient: @Model.Name </h1>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.PatientId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  @Html.LabelFor(model => model.BirthDate)
+  @Html.EditorFor(model => model.BirthDate, new { type = "date" })
+
+  @Html.Label("Select a Doctor")
+  @Html.DropDownList("DoctorId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink($"Go back to Patient: {@Model.Name}", "Details", new { patientId = Model.PatientId } )</p>
+<p>@Html.ActionLink("Show all Patients", "Index")</p>

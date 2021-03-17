@@ -32,7 +32,7 @@ _This application allows a database to hold doctors and their patients. There is
 
 ## Known Bugs
 
-* _None_
+* Users can create empty data entries
 
 ## License
 
